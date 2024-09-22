@@ -1,0 +1,43 @@
+.wrapper {
+  max-width: 800px;
+  width: 100%;
+  position: absolute;
+  padding: 2rem 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+
+  .header {
+    mat-form-field {
+      width: 100%;
+    }
+  }
+
+  td.mat-column-edit {
+    width: 20px;
+  }
+
+  th.mat-column-position,
+  td.mat-column-position {
+    padding-left: 1rem;
+  }
+
+  .spinner-cell {
+    text-align: center; /* Wyśrodkowanie poziome */
+    height: 200px; /* Opcjonalnie - dostosuj w zależności od rozmiaru komórki */
+    mat-spinner {
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, -50%); /* Wyśrodkowanie pionowe i poziome */
+    }
+  }
+
+  .no-results-cell {
+    text-align: center; /* Wyśrodkowanie poziome */
+    height: 52px;
+    div {
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}

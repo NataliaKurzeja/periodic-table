@@ -1,0 +1,32 @@
+<h2 mat-dialog-title>Edytuj dane</h2>
+<mat-dialog-content [formGroup]="editDataForm" class="mat-typography">
+  <div class="row">
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Weight</mat-label>
+      <input type="number" matInput formControlName="weight" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Symbol</mat-label>
+      <input matInput formControlName="symbol" />
+    </mat-form-field>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Wyjdź</button>
+
+  <button
+    mat-button
+    [mat-dialog-close]="this.editDataForm.value"
+    cdkFocusInitial
+    [disabled]="!editDataForm.valid"
+  >
+    Zapisz
+  </button>
+</mat-dialog-actions>
