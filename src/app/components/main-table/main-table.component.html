@@ -6,7 +6,7 @@
     </mat-form-field>
   </div>
 
-  <div class="table-wrapper">
+  <div>
     <table mat-table matSort [dataSource]="tableData" class="mat-elevation-z8">
       <ng-container matColumnDef="position">
         <th mat-header-cell mat-sort-header *matHeaderCellDef>Position</th>
@@ -45,7 +45,7 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 
       <tr class="mat-row" *matNoDataRow>
-        @if( this.periodicElementsStore.loading()){
+        @if( periodicElementsStore.loading()){
         <td class="mat-cell spinner-cell"><mat-spinner></mat-spinner></td>
         } @else {
         <td class="mat-cell no-results-cell"><div>No matching results</div></td>

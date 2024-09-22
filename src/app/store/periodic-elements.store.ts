@@ -2,10 +2,10 @@ import { inject } from '@angular/core';
 import { tapResponse } from '@ngrx/operators';
 import { patchState, signalStore, withMethods, withState } from '@ngrx/signals';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
-import { debounceTime, distinctUntilChanged, pipe, switchMap, tap } from 'rxjs';
+import { pipe, switchMap, tap } from 'rxjs';
 
-import { FakeHttpService } from './shared/fake-http.service';
-import { PeriodicElement } from './shared/interfaces/periodic-element.interface';
+import { FakeHttpService } from '../shared/fake-http.service';
+import { PeriodicElement } from '../shared/interfaces/periodic-element.interface';
 
 interface PeriodicElementsState {
   model: PeriodicElement[];

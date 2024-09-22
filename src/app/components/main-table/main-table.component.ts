@@ -6,7 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { PeriodicElementsStore } from '../../periodic-elements.store';
+import { PeriodicElementsStore } from '../../store/periodic-elements.store';
 import { PeriodicElement } from '../../shared/interfaces/periodic-element.interface';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { EditTableDataComponent } from '../edit-table-data/edit-table-data.component';
@@ -31,12 +31,14 @@ import { debounceTime } from 'rxjs';
   styleUrl: './main-table.component.scss',
 })
 export class MainTableComponent {
+  @ViewChild(MatSort) sort!: MatSort;
+
+  dialog = inject(MatDialog);
+  periodicElementsStore = inject(PeriodicElementsStore);
+
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'edit'];
   tableData = new MatTableDataSource<PeriodicElement>();
   filterControl = new FormControl('');
-  dialog = inject(MatDialog);
-  periodicElementsStore = inject(PeriodicElementsStore);
-  @ViewChild(MatSort) sort!: MatSort;
 
   constructor() {
     effect(() => {
@@ -48,9 +50,7 @@ export class MainTableComponent {
     this.periodicElementsStore.loadData();
 
     this.filterControl.valueChanges
-      .pipe(
-        debounceTime(2000) // Opóźnienie 2 sekundy
-      )
+      .pipe(debounceTime(2000))
       .subscribe((filterValue) => {
         this.tableData.filter = filterValue
           ? filterValue.trim().toLowerCase()
@@ -68,7 +68,7 @@ export class MainTableComponent {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      this.periodicElementsStore.editData(result);
+      if (result) this.periodicElementsStore.editData(result);
     });
   }
 }

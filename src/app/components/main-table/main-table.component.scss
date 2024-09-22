@@ -22,17 +22,17 @@
   }
 
   .spinner-cell {
-    text-align: center; /* Wyśrodkowanie poziome */
-    height: 200px; /* Opcjonalnie - dostosuj w zależności od rozmiaru komórki */
+    text-align: center;
+    height: 200px;
     mat-spinner {
       position: absolute;
       left: 50%;
-      transform: translate(-50%, -50%); /* Wyśrodkowanie pionowe i poziome */
+      transform: translate(-50%, -50%);
     }
   }
 
   .no-results-cell {
-    text-align: center; /* Wyśrodkowanie poziome */
+    text-align: center;
     height: 52px;
     div {
       position: absolute;
